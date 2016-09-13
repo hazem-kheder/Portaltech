@@ -26,9 +26,9 @@ class ListLoader
             return [];
         }
 
-        //return $listsData;
+        return $listsData;
 
-        $lists = array();
+        /*$lists = array();
 
         foreach($listsData as $listData)
         {
@@ -37,7 +37,7 @@ class ListLoader
 
         }
 
-        return $lists;
+        return $lists;*/
     }
 
     /**
@@ -46,7 +46,14 @@ class ListLoader
      */
     public function getSingleList($id)
     {
-        $listArray = $this->listStorage->findOneById($id);
+        try{
+            $listArray = $this->listStorage->findOneById($id);
+        }
+        catch(\PDOException $e){
+            trigger_error("Database Exception :".$e->getMessage());
+            return [];
+        }
+
 
         return $listArray;
 

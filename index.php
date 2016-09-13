@@ -1,5 +1,18 @@
 <?php
+use Portaltech\Container;
 include_once __DIR__.'/bootstrap.php';
+
+$container = new Container($configuration);
+$listLoader = $container->getListLoader();
+$lists = $listLoader->getLists();
+
+
+$listId = isset($_GET['list_id']) ? $_GET['list_id'] : 1;
+
+$container->setListId($listId);
+$taskLoader = $container->getTaskLoader();
+$tasks = $taskLoader->getTasks();
+//var_dump($lists);die;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +36,26 @@ include_once __DIR__.'/bootstrap.php';
         <div class="col-md-6">
             <h2 class="col-md-12">Lists</h2>
             <ul class="col-md-12">
-                <li></li>
+                <?php foreach($lists as $list) : ?>
+                    <li>
+                        <a class="list" href="index.php?list_id=<?php echo $list['id']; ?>"> <?php echo $list['name']; ?></a>
+                        <a href="">Edit</a><a href="">Delete</a><a href="">Mark Done</a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="col-md-6">
             <h2 content="col-md-6">Tasks</h2>
             <ul class="col-md-12">
-               <li></li>
+                <?php if(count($tasks) > 0): ?>
+                    <?php foreach($tasks as $task) : ?>
+                        <li><span class="list"> <?php echo $task['description']; ?></span>
+                            <a href="">Edit</a><a href="">Delete</a><a href="">Mark Done</a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <li class="empty">There is no Tasks for this List !</li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

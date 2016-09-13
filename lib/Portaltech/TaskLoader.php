@@ -26,9 +26,9 @@ class TaskLoader
             return [];
         }
 
-        //return $tasksData;
+        return $tasksData;
 
-        $tasks = array();
+        /*$tasks = array();
 
         foreach($tasksData as $taskData)
         {
@@ -37,7 +37,7 @@ class TaskLoader
 
         }
 
-        return $tasks;
+        return $tasks;*/
     }
 
     /**
@@ -46,7 +46,13 @@ class TaskLoader
      */
     public function getSingleTask($id)
     {
-        $taskArray = $this->taskStorage->findOneById($id);
+        try{
+            $taskArray = $this->taskStorage->findOneById($id);
+        }
+        catch(\PDOException $e){
+            trigger_error("Database Exception :".$e->getMessage());
+            return [];
+        }
 
         return $taskArray;
 

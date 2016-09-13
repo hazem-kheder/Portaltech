@@ -16,4 +16,6 @@ interface CRUDInterface
      */
     public function findOneById($id);
 
+    //Methods to add update - delete ...
+
 }

@@ -16,3 +16,16 @@ $configuration = array(
     'db_pass' => "",
 );
 
+//My autoloading function in case you dont want to use Composer autoloading
+/*
+spl_autoload_register(function($className){
+
+        //require_once __DIR__.'/lib/Service/BattleManager.php';
+
+        $path =  __DIR__.'/lib/'.str_replace('\\', '/', $className).'.php';
+
+        if(file_exists($path)){
+            require $path;
+        }
+});
+*/

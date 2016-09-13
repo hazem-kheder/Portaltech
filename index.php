@@ -43,6 +43,7 @@ $tasks = $taskLoader->getTasks();
                     </li>
                 <?php endforeach; ?>
             </ul>
+            <div class="col-md-12 "><button type="button" class="btn btn-warning">Add List</button></div>
         </div>
         <div class="col-md-6">
             <h2 content="col-md-6">Tasks</h2>
@@ -57,6 +58,7 @@ $tasks = $taskLoader->getTasks();
                     <li class="empty">There is no Tasks for this List !</li>
                 <?php endif; ?>
             </ul>
+            <div class="col-md-12 "><button type="button" class="btn btn-warning">Add Task</button></div>
         </div>
     </div>
 </div>

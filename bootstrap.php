@@ -7,3 +7,11 @@ if( !file_exists(__DIR__.'/composer.lock' ) )
 }
 // Include the composer autoloader
 include_once __DIR__.'/vendor/autoload.php';
+
+
+//Database Configuration
+$configuration = array(
+    'db_dsn' => 'mysql:host=localhost;dbname=portaltech',
+    'db_user' => "root",
+    'db_pass' => "",
+);

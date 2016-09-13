@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pc
- * Date: 9/13/2016
- * Time: 11:07 م
- */
 
 namespace Portaltech;
 
